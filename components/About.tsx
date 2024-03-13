@@ -1,5 +1,5 @@
 const about =
-  "Web developer with enthusiasm for React frameworks, Tailwind and NodeJS. Experienced in game development and deployment." as string;
+  "Web developer with enthusiasm for React frameworks, Tailwind and NodeJS" as string;
 
 /* house inforrmation about me */
 export default function About(): JSX.Element {
