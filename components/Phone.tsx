@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { Phone } from "lucide-react";
 
@@ -18,20 +17,24 @@ const AddContactPage: React.FC = () => {
       EMAIL:${contactInfo.email}
       END:VCARD`;
 
-    // 1. Data URI (Download Attempt)
+    // Data URI (Download Attempt)
     const dataURI = `data:text/vcard;charset=utf-8,${encodeURIComponent(
       contactString
     )}`;
-    const link = document.createElement("a");
-    link.href = dataURI;
-    link.download = "samallen.vcf";
-    link.click();
 
-    // 2. Intent URI (Primarily Android)
-    const intentURI = `intent://addcontact/#Intent;scheme=vcard;S.FN=${contactInfo.name};S.TEL=${contactInfo.phone};S.EMAIL=${contactInfo.email};end;`;
-    window.location.href = intentURI;
+    // Check if the user agent is iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-    // 3. Web Share API (If Available)
+    // If it's iOS, open a new window with the data URI
+    if (isIOS) {
+      window.open(dataURI);
+    } else {
+      // Otherwise, try the Intent URI (Primarily Android)
+      const intentURI = `intent://addcontact/#Intent;scheme=vcard;S.FN=${contactInfo.name};S.TEL=${contactInfo.phone};S.EMAIL=${contactInfo.email};end;`;
+      window.location.href = intentURI;
+    }
+
+    // Web Share API (If Available)
     if (navigator.share) {
       navigator
         .share({
