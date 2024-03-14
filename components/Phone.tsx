@@ -9,7 +9,7 @@ const AddContactPage: React.FC = () => {
     email: "sokunsamnang45@gmail.com",
   };
 
-  const handleAddContact = () => {
+  const handleDownloadContact = () => {
     // Create the vCard String
     const contactString = `BEGIN:VCARD
       VERSION:3.0
@@ -38,21 +38,15 @@ const AddContactPage: React.FC = () => {
     // Clean up: remove the temporary link and revoke the URL
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-
-    // iOS Contacts URI
-    const iOSContactsURI = `contacts://add?url=${url}`;
-
-    // Open the Contacts app (or prompt the user to open it)
-    window.location.href = iOSContactsURI;
   };
 
   return (
     <div>
       <button
-        aria-label="Add Contact"
+        aria-label="Download Contact"
         type="button"
         className="p-3 mx-1 font-bold capitalize rounded-lg bg-zinc-400 hover:bg-zinc-600"
-        onClick={handleAddContact}
+        onClick={handleDownloadContact}
       >
         <Phone />
       </button>
