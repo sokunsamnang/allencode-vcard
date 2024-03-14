@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
+    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
 };
@@ -25,7 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
