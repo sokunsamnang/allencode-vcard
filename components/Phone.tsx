@@ -18,33 +18,26 @@ const AddContactPage: React.FC = () => {
       EMAIL:${contactInfo.email}
       END:VCARD`;
 
-    // Data URI (Download Attempt)
-    const dataURI = `data:text/vcard;charset=utf-8,${encodeURIComponent(
-      contactString
-    )}`;
+    // Convert vCard string to a Blob
+    const blob = new Blob([contactString], {
+      type: "text/vcard;charset=utf-8",
+    });
 
-    // Check if the user agent is iOS
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    // Create a URL for the Blob
+    const url = URL.createObjectURL(blob);
 
-    // If it's iOS, open a new window with the data URI
-    if (isIOS) {
-      window.open(dataURI);
-    } else {
-      // Otherwise, try the Intent URI (Primarily Android)
-      const intentURI = `intent://addcontact/#Intent;scheme=vcard;S.FN=${contactInfo.name};S.TEL=${contactInfo.phone};S.EMAIL=${contactInfo.email};end;`;
-      window.location.href = intentURI;
-    }
+    // Create a temporary link element
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "samallen.vcf");
 
-    // Web Share API (If Available)
-    if (navigator.share) {
-      navigator
-        .share({
-          title: "Contact Information",
-          text: contactString,
-          url: dataURI,
-        })
-        .catch((error) => console.error("Error sharing:", error));
-    }
+    // Append the link to the body and trigger the click event
+    document.body.appendChild(link);
+    link.click();
+
+    // Clean up: remove the temporary link and revoke the URL
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   return (
