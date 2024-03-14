@@ -10,20 +10,21 @@ const SaveContact: React.FC = () => {
   };
 
   const handleSaveContact = () => {
-    const contactString = `BEGIN:VCARD
-    VERSION:3.0
-    FN:${contactInfo.name}
-    TEL:${contactInfo.phone}
-    EMAIL:${contactInfo.email}
-    END:VCARD`;
+    const vCardData = `
+      BEGIN:VCARD
+      VERSION:3.0
+      FN:${contactInfo.name}
+      TEL:${contactInfo.phone}
+      EMAIL:${contactInfo.email}
+      END:VCARD
+    `;
 
-    // Open a new window with the vCard data
-    const contactWindow = window.open();
-    if (contactWindow) {
-      contactWindow.document.write(`<pre>${contactString}</pre>`);
-    } else {
-      alert("Please allow pop-ups to save the contact.");
-    }
+    const dataURI = `data:text/vcard;charset=utf-8,${encodeURIComponent(
+      vCardData
+    )}`;
+
+    // Open the Data URI in the same window to trigger the "Create New Contact" action
+    window.location.href = dataURI;
   };
 
   return (
