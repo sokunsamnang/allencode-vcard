@@ -4,7 +4,6 @@ import Divider from "@/components/Divider";
 import Info from "@/components/Info";
 import Interest from "@/components/Interest";
 import Portrait from "@/components/Portrait";
-import SocialMedia from "@/components/SocialMedia";
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         <About />
         <Interest />
         <Divider />
-        <SocialMedia />
       </div>
     </div>
   );
