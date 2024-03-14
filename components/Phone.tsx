@@ -31,13 +31,19 @@ const AddContactPage: React.FC = () => {
     link.href = url;
     link.setAttribute("download", "samallen.vcf");
 
-    // Append the link to the body and trigger the click event
+    // Append the link to the body
     document.body.appendChild(link);
-    link.click();
 
-    // Clean up: remove the temporary link and revoke the URL
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    // Trigger the click event using setTimeout to ensure proper execution
+    setTimeout(() => {
+      link.click();
+
+      // Clean up: remove the temporary link and revoke the URL after a short delay
+      setTimeout(() => {
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }, 100);
+    }, 100);
   };
 
   return (
