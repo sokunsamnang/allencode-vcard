@@ -1,5 +1,5 @@
 const about =
-  "Web developer with enthusiasm for React frameworks, Tailwind and NodeJS" as string;
+  "Proficient in Flutter, React Native, and Next.js. Passionate about crafting seamless user experiences, Elevating businesses through innovative solutions" as string;
 
 /* house inforrmation about me */
 export default function About(): JSX.Element {

@@ -1,5 +1,5 @@
 const interest =
-  "Passion to master Full-Stack along with Continuous Deployment and Delivery. I enjoy video game development on my spare time. When I'm not programming I play guitar, lift weights, video games, or work on cars." as string;
+  "In addition to my expertise in mobile and web development with Flutter, React Native, and Next.js, I'm passionate about mastering Full-Stack development alongside Continuous Deployment and Delivery practices. During my free time, I enjoy exploring new technologies and methodologies to stay ahead in the ever-evolving field of software development. This drive for continuous learning fuels my creativity and problem-solving skills, ensuring I deliver top-notch solutions to every project I undertake." as string;
 
 /* short paragraph of myself */
 export default function Interest(): JSX.Element {
