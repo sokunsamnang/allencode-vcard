@@ -9,35 +9,31 @@ const SaveContact: React.FC = () => {
     email: "sokunsamnang45@gmail.com",
   };
 
-  const handleCopyContact = () => {
-    const vCardData = `BEGIN:VCARD
+  const handleAddContact = () => {
+    const contactString = `BEGIN:VCARD
       VERSION:3.0
       FN:${contactInfo.name}
       TEL:${contactInfo.phone}
       EMAIL:${contactInfo.email}
       END:VCARD`;
 
-    navigator.clipboard
-      .writeText(vCardData)
-      .then(() => {
-        alert(
-          "Contact information copied. Please paste it into your contacts app."
-        );
-      })
-      .catch((error) => {
-        console.error("Error copying contact information:", error);
-        alert(
-          "Failed to copy contact information. Please manually copy and paste it."
-        );
-      });
+    const dataURI = `data:text/vcard;charset=utf-8,${encodeURIComponent(
+      contactString
+    )}`;
+
+    // Open the Data URI in a new tab to prompt the user to manually add the contact
+    const contactTab = window.open(dataURI, "_blank");
+    if (!contactTab) {
+      alert("Please allow pop-ups to add the contact.");
+    }
   };
 
   return (
     <button
-      aria-label="Save Contact"
+      aria-label="Add Contact"
       type="button"
       className="p-3 mx-1 font-bold capitalize rounded-lg bg-zinc-400 hover:bg-zinc-600"
-      onClick={handleCopyContact}
+      onClick={handleAddContact}
     >
       <Phone />
     </button>
