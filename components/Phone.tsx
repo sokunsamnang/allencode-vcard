@@ -1,13 +1,13 @@
 "use client";
 import { Phone } from "lucide-react";
-import React, { useState } from "react";
+import React from "react";
 
 const SaveContact: React.FC = () => {
-  const [contactInfo] = useState({
+  const contactInfo = {
     name: "Sam Allen",
     phone: "+855964227037",
     email: "sokunsamnang45@gmail.com",
-  });
+  };
 
   const generateVCard = () => {
     return `BEGIN:VCARD
@@ -20,15 +20,10 @@ const SaveContact: React.FC = () => {
 
   const handleDownloadContact = () => {
     const vCardString = generateVCard();
-    const blob = new Blob([vCardString], { type: "text/vcard" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "contact.vcf";
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    document.body.removeChild(a);
+    const dataUri = `data:text/vcard;charset=utf-8,${encodeURIComponent(
+      vCardString
+    )}`;
+    window.open(dataUri);
   };
 
   return (
