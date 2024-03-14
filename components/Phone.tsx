@@ -1,6 +1,6 @@
 "use client";
-import { Phone } from "lucide-react";
 import React from "react";
+import { Phone } from "lucide-react";
 
 const SaveContact: React.FC = () => {
   const contactInfo = {
@@ -9,21 +9,21 @@ const SaveContact: React.FC = () => {
     email: "sokunsamnang45@gmail.com",
   };
 
-  const generateVCard = () => {
-    return `BEGIN:VCARD
+  const handleSaveContact = () => {
+    const contactString = `BEGIN:VCARD
     VERSION:3.0
     FN:${contactInfo.name}
     TEL:${contactInfo.phone}
     EMAIL:${contactInfo.email}
     END:VCARD`;
-  };
 
-  const handleDownloadContact = () => {
-    const vCardString = generateVCard();
-    const dataUri = `data:text/vcard;charset=utf-8,${encodeURIComponent(
-      vCardString
-    )}`;
-    window.open(dataUri);
+    // Open a new window with the vCard data
+    const contactWindow = window.open();
+    if (contactWindow) {
+      contactWindow.document.write(`<pre>${contactString}</pre>`);
+    } else {
+      alert("Please allow pop-ups to save the contact.");
+    }
   };
 
   return (
@@ -31,7 +31,7 @@ const SaveContact: React.FC = () => {
       aria-label="Save Contact"
       type="button"
       className="p-3 mx-1 font-bold capitalize rounded-lg bg-zinc-400 hover:bg-zinc-600"
-      onClick={handleDownloadContact}
+      onClick={handleSaveContact}
     >
       <Phone />
     </button>
