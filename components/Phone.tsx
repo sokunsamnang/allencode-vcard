@@ -10,12 +10,37 @@ const AddContactPage: React.FC = () => {
   };
 
   const handleAddContact = () => {
-    const contactName = encodeURIComponent(contactInfo.name);
-    const contactPhone = encodeURIComponent(contactInfo.phone);
-    const contactEmail = encodeURIComponent(contactInfo.email);
+    // Create the vCard String
+    const contactString = `BEGIN:VCARD
+      VERSION:3.0
+      FN:${contactInfo.name}
+      TEL:${contactInfo.phone}
+      EMAIL:${contactInfo.email}
+      END:VCARD`;
+
+    // Convert vCard string to a Blob
+    const blob = new Blob([contactString], {
+      type: "text/vcard;charset=utf-8",
+    });
+
+    // Create a URL for the Blob
+    const url = URL.createObjectURL(blob);
+
+    // Create a temporary link element
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "samallen.vcf");
+
+    // Append the link to the body and trigger the click event
+    document.body.appendChild(link);
+    link.click();
+
+    // Clean up: remove the temporary link and revoke the URL
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
 
     // iOS Contacts URI
-    const iOSContactsURI = `contacts://add?name=${contactName}&phone=${contactPhone}&email=${contactEmail}`;
+    const iOSContactsURI = `contacts://add?url=${url}`;
 
     // Open the Contacts app (or prompt the user to open it)
     window.location.href = iOSContactsURI;
