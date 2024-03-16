@@ -1,4 +1,4 @@
-import * as lucideReact from "lucide-react";
+import { Github as GithubIcon } from "lucide-react";
 export const githubUrl = "https://github.com/sokunsamnang" as string;
 
 /* button to link to my repos */
@@ -15,7 +15,7 @@ export default function Github(): JSX.Element {
         rel="noreferrer"
         target="_blank"
       >
-        <lucideReact.Github />
+        <GithubIcon />
       </a>
     </button>
   );

@@ -1,5 +1,5 @@
 const interest =
-  "In addition to my expertise in mobile and web development with Flutter, React Native, and Next.js, I'm passionate about mastering Full-Stack development alongside Continuous Deployment and Delivery practices. During my free time, I enjoy exploring new technologies and methodologies to stay ahead in the ever-evolving field of software development. This drive for continuous learning fuels my creativity and problem-solving skills, ensuring I deliver top-notch solutions to every project I undertake." as string;
+  "I have strong skills in creating apps for phones and websites using Flutter, React Native, and React. I enjoy mastering every aspect of app and website development, ensuring smooth updates and deliveries. Outside of work, I dedicate time to learning new techniques and staying current with software advancements. This continual learning enhances my creativity and problem-solving abilities, allowing me to consistently provide optimal solutions for each project." as string;
 
 /* short paragraph of myself */
 export default function Interest(): JSX.Element {

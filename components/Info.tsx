@@ -1,6 +1,5 @@
 const name = "Sam Allen" as string;
 const description = "Mobile Developer | Web Developer" as string;
-const githubUrl = "https://github.com/sokunsamnang" as string;
 
 export default function Info(): JSX.Element {
   return (

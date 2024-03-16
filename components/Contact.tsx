@@ -1,4 +1,4 @@
-import Email from "./Email";
+import QrCode from "./QrCode";
 import Github from "./Github";
 import AddContactPage from "./Phone";
 
@@ -7,7 +7,7 @@ export default function Contact(): JSX.Element {
   return (
     <div className="flex justify-center py-4">
       <Github />
-      <Email />
+      <QrCode />
       <AddContactPage />
     </div>
   );
