@@ -5,7 +5,7 @@ import { ContactIcon } from "lucide-react";
 const AddContactPage: React.FC = () => {
   return (
     <div>
-      <a href="http://192.168.3.133:3001/download-contact">
+      <a href="https://allencode.dev/samallen.vcf">
         <button
           aria-label="Open Contact"
           type="button"
