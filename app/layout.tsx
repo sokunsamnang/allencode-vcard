@@ -1,43 +1,95 @@
-import "@/styles/globals.css";
-import { Metadata } from "next";
-import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
-import { Providers } from "./providers";
-import clsx from "clsx";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import StarsCanvas from "@/components/main/StarsBackground";
+import Navbar from "@/components/Navbar";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+    metadataBase: new URL("https://ibiimemon.com/"),
+    title: "Sam Allen - SWE | IXD | UX - Developer Portfolio",
+    description:
+        "Developer Portfolio of Frontend & Mobile App Developer from Cambodia with 3+ years of expertise. Senior Software Engineer. Specializing mobile apps, UX, and JavaScript technologies.",
+    keywords: [
+        "Developer",
+        "Portfolio",
+        "Developer Portflio",
+        "Sam Allen",
+        "Allen",
+        "SamAllen",
+        "Sokunsamnang",
+        "Sam An Sokunsamnang",
+        "Sokunsamnang Sam An",
+        "AllenCode.dev",
+        "allencode.dev",
+        "Next.js",
+        "ReactNative",
+        "Android",
+        "Flutter",
+        "Cambodia",
+    ],
+    openGraph: {
+        title: "Sam Allen - SWE | IXD | UX",
+        description:
+            "Frontend & Mobile App Developer from Cambodia with 3+ years of expertise. Senior Software Engineer. Specializing mobile apps, UX, and JavaScript technologies.",
+        images: "/OpenGraph.jpg",
+    },
+    alternates: {
+        canonical: "https://allencode.dev/",
+    },
 };
-
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="manifest" href="/manifest.json" />
-      </head>
-      <body
-        className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <main>{children}</main>
-        </Providers>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "http://schema.org",
+                            "@type": "Person",
+                            name: "Sam Allen",
+                            jobTitle: "Software Engineer",
+                            url: "https://allencode.dev",
+                            sameAs: [
+                                "https://www.linkedin.com/in/sokunsamnang-sam-an/",
+                                "https://github.com/sokunsamnang",
+                            ],
+                        }),
+                    }}
+                />
+                <script
+                    async
+                    src={`https://www.googletagmanager.com/gtag/js?id=G-${process.env.NEXT_PRIVATE_GTID}`}
+                ></script>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                          window.dataLayer = window.dataLayer || [];
+                          function gtag(){dataLayer.push(arguments);}
+                          gtag('js', new Date());
+
+                          gtag('config', 'G-${process.env.NEXT_PRIVATE_GTID}');
+                        `,
+                    }}
+                />
+            </head>
+            <body
+                className={`${inter.className} bg-[#111] overflow-y-scroll overflow-x-hidden`}
+            >
+                <SpeedInsights />
+                <Analytics />
+                <StarsCanvas />
+                <Navbar />
+                {children}
+            </body>
+        </html>
+    );
 }

@@ -1,22 +1,19 @@
 import About from "@/components/About";
-import Contact from "@/components/Contact";
-import Divider from "@/components/Divider";
-import Info from "@/components/Info";
-import Interest from "@/components/Interest";
-import Portrait from "@/components/Portrait";
+import Banner from "@/components/Banner";
+import Experience from "@/components/Experience";
+import Footer from "@/components/Footer";
+import Projects from "@/components/Projects";
 
 export default function Home() {
   return (
-    <div className="flex justify-center m-0 p-0">
-      <div className="max-w-sm overflow-x-hidden shadow-lg rounded-3xl bg-zinc-200">
-        <Portrait />
-        <Info />
-        <Contact />
-        <Divider />
+    <main className="h-full w-full  bg-[url('/LooperGroup2.png')] bg-no-repeat">
+      <div className="flex flex-col gap-20">
+        <Banner />
         <About />
-        <Interest />
-        <Divider />
+        <Experience />
+        <Projects />
+        <Footer />
       </div>
-    </div>
+    </main>
   );
 }
