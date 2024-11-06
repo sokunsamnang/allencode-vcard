@@ -30,9 +30,9 @@ const Experience: React.FC<{}> = () => {
                 </div>
 
                 <p className="text-gray-300 pt-5">
-                    I'm currently working at KOOMPI, where I focus on creating
+                    I`m currently working at KOOMPI, where I focus on creating
                     SaaS solutions like StadiumX for sports ticketing and a
-                    crypto wallet for Selendra. I'm also involved in developing
+                    crypto wallet for Selendra. I`m also involved in developing
                     the KOOMPI Mobile Application to enhance business efficiency
                     and streamline user experience.
                     <br />
