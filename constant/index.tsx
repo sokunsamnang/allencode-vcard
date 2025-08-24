@@ -15,7 +15,7 @@ export const Social_Icons = [
         alt: "Sam Allen - Social Media",
     },
     {
-        link: "https://twitter.com/allencode.dev",
+        link: "https://twitter.com/allencode_dev",
         image: "/Twitter.svg",
         alt: "Sam Allen - Social Media",
     },
