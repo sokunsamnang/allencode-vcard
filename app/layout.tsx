@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://ibiimemon.com/"),
+    metadataBase: new URL("https://allencode.dev/"),
     title: "Sam Allen - SWE | IXD | UX - Developer Portfolio",
     description:
         "Developer Portfolio of Frontend & Mobile App Developer from Cambodia with 3+ years of expertise. Senior Software Engineer. Specializing mobile apps, UX, and JavaScript technologies.",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         title: "Sam Allen - SWE | IXD | UX",
         description:
             "Frontend & Mobile App Developer from Cambodia with 3+ years of expertise. Senior Software Engineer. Specializing mobile apps, UX, and JavaScript technologies.",
-        images: "/OpenGraph.jpg",
+        images: "/OpenGraph.png",
     },
     alternates: {
         canonical: "https://allencode.dev/",
